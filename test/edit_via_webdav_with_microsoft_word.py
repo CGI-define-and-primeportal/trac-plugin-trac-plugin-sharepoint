@@ -1,4 +1,8 @@
-import win32com.client
+from nose.plugins.skip import SkipTest
+try:
+	import win32com.client
+except ImportError:
+	raise SkipTest("win32com.client is not supported on this platform.")
 import uuid
 
 # http://conda.pydata.org/miniconda.html
