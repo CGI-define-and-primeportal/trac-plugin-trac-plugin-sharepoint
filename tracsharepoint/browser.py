@@ -1,7 +1,8 @@
 from genshi.builder import tag
-from trac.core import implements
+from trac.core import Component, implements
 from trac.web.api import ITemplateStreamFilter
 from trac.web.chrome import ITemplateProvider, add_script
+from trac.config import ListOption
 
 from contextmenu.contextmenu import SubversionLink, ISourceBrowserContextMenuProvider, is_subversion_repository
 
@@ -55,6 +56,7 @@ class BrowserLaunchOfficeForEdit(SubversionLink):
         if data.get('stickyrev'):
             return None
 
+        reponame = data['reponame'] or ''
         ext = os.path.splitext(entry.name)[1][1:]
 
         if not entry.isdir and ext in self.office_file_extensions:

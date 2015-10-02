@@ -38,7 +38,7 @@ class TestOfficeEditing(unittest.TestCase):
 		word_doc.SaveAs(self.path)
 		word_doc.Close()
 
-		word_doc = self.word_app.Documents.Open(self.path)
+		word_doc = self.word_app.Documents.Open(path)
 		# TODO I'd like to check svn lock info here
 		word_doc.Content = "Test 2"
 		word_doc.SaveAs(self.path)
